@@ -28,10 +28,20 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="vision">Visión de la empresa:</label>
+                        <textarea id="vision" name="vision" placeholder="¿Hacia dónde se dirige la empresa? ¿Qué quiere lograr en el futuro?" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mission">Misión de la empresa:</label>
+                        <textarea id="mission" name="mission" placeholder="¿Cuál es el propósito y objetivo principal de la empresa?" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
                         <label for="visualElement">Elemento visual:</label>
                         <input type="text" id="visualElement" name="visualElement" placeholder="Camión, Edificio, Animal" required>
                     </div>
-
+                    <!--
                     <div class="form-group">
                         <label for="textPosition">Posición del texto:</label>
                         <select id="textPosition" name="textPosition" required>
@@ -41,7 +51,7 @@
                             <option value="Derecha">Derecha</option>
                             <option value="Centro">Centro</option>
                         </select>
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                         <label for="logoType">Tipo de logo:</label>
@@ -73,7 +83,7 @@
                             <option value="Moderno">Moderno</option>
                             <option value="Retro">Retro</option>
                             <option value="3D">3D</option>
-                            <option value="Flat">Flat</option>
+                            <option value="Flat">Elegante</option>
                         </select>
                     </div>
 
@@ -122,10 +132,17 @@
                     <div class="logo-display">
                         <img id="logo-image" src="" alt="Logo generado">
                     </div>
+                    
                     <div class="prompt-info">
-                        <h3>Descripción utilizada:</h3>
+                        <h3>Prompt utilizado para la generación:</h3>
                         <p id="prompt-text"></p>
                     </div>
+                    
+                    <div class="explanation-container" id="explanation-container">
+                        <h3>Significado del logo:</h3>
+                        <p id="explanation-text"></p>
+                    </div>
+                    
                     <div class="action-buttons">
                         <button id="download-btn" class="action-btn">
                             <i class="fas fa-download"></i> Descargar
