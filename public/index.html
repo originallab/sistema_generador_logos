@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Logos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LogoAI Generator</h1>
+            <p>Crea logos profesionales para tu marca en segundos con inteligencia artificial</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="logo-form">
+                    <div class="form-group">
+                        <label for="brand">Nombre de la empresa:</label>
+                        <input type="text" id="brand" name="brand" placeholder="Ingresa el nombre de la empresa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industria:</label>
+                        <input type="text" id="industry" name="industry" placeholder="Tecnológica, Alimenticia, Distribuidora..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visualElement">Elemento visual:</label>
+                        <input type="text" id="visualElement" name="visualElement" placeholder="Camión, Edificio, Animal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textPosition">Posición del texto:</label>
+                        <select id="textPosition" name="textPosition" required>
+                            <option value="Arriba">Arriba</option>
+                            <option value="Abajo">Abajo</option>
+                            <option value="Izquierda">Izquierda</option>
+                            <option value="Derecha">Derecha</option>
+                            <option value="Centro">Centro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logoType">Tipo de logo:</label>
+                        <select id="logoType" name="logoType" required>
+                            <option value="Logotipo (Texto)">Logotipo (Texto)</option>
+                            <option value="Isotipo (Símbolo)">Isotipo (Símbolo)</option>
+                            <option value="Isologotipo (Texto + Símbolo)">Isologotipo (Texto + Símbolo)</option>
+                            <option value="Imagotipo (Texto y Símbolo separados)">Imagotipo (Texto y Símbolo separados)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="typography">Tipografía:</label>
+                        <select id="typography" name="typography" required>
+                            <option value="Serif">Serif</option>
+                            <option value="Sans-serif">Sans-serif</option>
+                            <option value="Script">Script</option>
+                            <option value="Display">Display</option>
+                            <option value="Monospace">Monospace</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logoStyle">Estilo de logo:</label>
+                        <select id="logoStyle" name="logoStyle" required>
+                            <option value="Ninguno">Ninguno</option>
+                            <option value="Minimalista">Minimalista</option>
+                            <option value="Vintage">Vintage</option>
+                            <option value="Moderno">Moderno</option>
+                            <option value="Retro">Retro</option>
+                            <option value="3D">3D</option>
+                            <option value="Flat">Flat</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="colorPalette">Selecciona una paleta de colores:</label>
+                        <select id="colorPalette" name="colorPalette" required>
+                            <option value="Rojos">Rojos</option>
+                            <option value="Azules">Azules</option>
+                            <option value="Verdes">Verdes</option>
+                            <option value="Amarillos">Amarillos</option>
+                            <option value="Morados">Morados</option>
+                            <option value="Naranjas">Naranjas</option>
+                            <option value="Blanco y Negro">Blanco y Negro</option>
+                            <option value="Pasteles">Pasteles</option>
+                        </select>
+                    </div>
+
+                    <div class="color-preview" id="color-preview">
+                        <div class="color-box" style="background-color: #FF0000;"></div>
+                        <div class="color-box" style="background-color: #FF5757;"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imageSize">Tamaño de imagen:</label>
+                        <select id="imageSize" name="imageSize" required>
+                            <option value="1024x1024">1024x1024</option>
+                            <option value="1024x1792">1024x1792</option>
+                            <option value="1792x1024">1792x1024</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="generate-btn">
+                        <span>Generar Logo</span>
+                        <i class="fas fa-magic"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="result-container" id="result-container">
+                <div class="spinner" id="spinner">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <div class="result-content" id="result-content">
+                    <div class="logo-display">
+                        <img id="logo-image" src="" alt="Logo generado">
+                    </div>
+                    <div class="prompt-info">
+                        <h3>Descripción utilizada:</h3>
+                        <p id="prompt-text"></p>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="download-btn" class="action-btn">
+                            <i class="fas fa-download"></i> Descargar
+                        </button>
+                        <button id="regenerate-btn" class="action-btn">
+                            <i class="fas fa-redo"></i> Regenerar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>LogoAI Generator © 2025 - Creado con ❤️ usando OpenAI</p>
+        </footer>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
