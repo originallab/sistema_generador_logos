@@ -41,25 +41,13 @@
                         <label for="visualElement">Elemento visual:</label>
                         <input type="text" id="visualElement" name="visualElement" placeholder="Camión, Edificio, Animal" required>
                     </div>
-                    <!--
-                    <div class="form-group">
-                        <label for="textPosition">Posición del texto:</label>
-                        <select id="textPosition" name="textPosition" required>
-                            <option value="Arriba">Arriba</option>
-                            <option value="Abajo">Abajo</option>
-                            <option value="Izquierda">Izquierda</option>
-                            <option value="Derecha">Derecha</option>
-                            <option value="Centro">Centro</option>
-                        </select>
-                    </div>-->
-
                     <div class="form-group">
                         <label for="logoType">Tipo de logo:</label>
                         <select id="logoType" name="logoType" required>
-                            <option value="Logotipo (Texto)">Logotipo (Texto)</option>
-                            <option value="Isotipo (Símbolo)">Isotipo (Símbolo)</option>
-                            <option value="Isologotipo (Texto + Símbolo)">Isologotipo (Texto + Símbolo)</option>
-                            <option value="Imagotipo (Texto y Símbolo separados)">Imagotipo (Texto y Símbolo separados)</option>
+                            <option value="solo el nombre de la empresa, sin símbolos">Logotipo (Texto)</option>
+                            <option value="Un símbolo representativo de la empresa, sin incluir texto">Isotipo (Símbolo)</option>
+                            <option value="Una combinación de texto y símbolo integrados en un solo diseño">Isologotipo (Texto + Símbolo)</option>
+                            <option value="un texto separado de un símbolo, ambos elementos se presentan juntos pero no se combinan">Imagotipo (Texto y Símbolo separados)</option>
                         </select>
                     </div>
 
@@ -83,7 +71,7 @@
                             <option value="Moderno">Moderno</option>
                             <option value="Retro">Retro</option>
                             <option value="3D">3D</option>
-                            <option value="Flat">Elegante</option>
+                            <option value="Elegante">Elegante</option>
                         </select>
                     </div>
 
@@ -100,12 +88,6 @@
                             <option value="Pasteles">Pasteles</option>
                         </select>
                     </div>
-
-                    <div class="color-preview" id="color-preview">
-                        <div class="color-box" style="background-color: #FF0000;"></div>
-                        <div class="color-box" style="background-color: #FF5757;"></div>
-                    </div>
-
                     <div class="form-group">
                         <label for="imageSize">Tamaño de imagen:</label>
                         <select id="imageSize" name="imageSize" required>

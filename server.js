@@ -57,7 +57,6 @@ app.post('/api/generate', async (req, res) => {
 
     Especificaciones:
     - Elemento visual principal: ${visualElement}
-    - Posición del texto en el logo: ${textPosition}
     - Tipo de logo: ${logoType}
     - Tipografía: ${typography}
     - Estilo de diseño: ${logoStyle || "No especificado"}
@@ -68,13 +67,18 @@ app.post('/api/generate', async (req, res) => {
 
     Por favor, crea un prompt detallado para DALL·E que describa exactamente cómo debería ser este logo, incluyendo todos los elementos, colores, disposición y estilo.
 
-    ⚠️ Importante: 
-    - Evita incluir mucho detalle, puntos, líneas decorativas, degradados, sombras ni texturas innecesarias.
+    ⚠️ Importante:
+    - El simbolo del logo debe ser plano, con líneas limpias y sin degradados, sombras ni texturas.
+    - Genera el simbolo y el nombre o dependiendo de la descripción del "${logoType}" 
+    - Evita incluir muchos detalles, decoraciones, degradados en entre los colores del logo, sombras ni texturas innecesarias.
     - Evita agregar palabras que no sean el nombre exacto de la empresa: "${brand}".
+    - Verifica que el texto esté correctamente escrito, sin errores ortográficos o palabras alteradas.
     - Evita mostrar texto adicional, palabras irrelevantes o errores ortográficos.
     - Evita incluir marcos, bordes, ni elementos decorativos alrededor del logo.
     - El logo debe ser plano (flat design), con estilo limpio y profesional.
     - Fondo blanco o transparente únicamente.
+    - No incluir estilos vintage, grabados, relieves ni ilustraciones realistas.
+    - Usa colores planos definidos por la paleta: ${colorPalette}.
     `;
 
 
