@@ -76,6 +76,7 @@ app.post('/api/generate', async (req, res) => {
     - El diseño debe ser escalable, limpio, claro y profesional.
     - Fondo blanco o transparente únicamente.
     - Usa colores planos definidos por la paleta: ${colorPalette}.
+    - Toma en cuenta ${vision} y ${mision}, para que el logtipo represente más a la empresa.
     `;
 
 
