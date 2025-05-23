@@ -30,12 +30,10 @@ app.post('/api/generate', async (req, res) => {
     brand,
     industry,
     visualElement,
-    textPosition,
     logoType,
     typography,
     logoStyle,
     colorPalette,
-    imageSize,
     vision,
     mission 
   } = req.body;
@@ -57,26 +55,27 @@ app.post('/api/generate', async (req, res) => {
 
     Especificaciones:
     - Un simbolo visual plano que represente: ${visualElement}
-    - Composición: ${logoType === 'símbolo + texto' ? 'símbolo encima o al lado del texto, centrado' : 'el nombre como forma principal'}
+    - Composición: ${logoType}
     - Tipografía: ${typography}
     - Estilo de diseño: ${logoStyle || "moderno, elegante, limpio"}
     - Paleta de colores: ${colorPalette}
-    - Tamaño de imagen: ${imageSize}
     ${vision ? `- Visión de la empresa: ${vision}` : ''}
     ${mission ? `- Misión de la empresa: ${mission}` : ''}
 
     Por favor, crea un prompt detallado para DALL·E que describa exactamente cómo debería ser este logo, incluyendo todos los elementos, colores, disposición y estilo.
 
     ⚠️ Importante:
-    - No usar sombras, degradados, texturas, marcos ni bordes decorativos.
+    - El logo debe ser plano, con líneas limpias y sin degradados, sombras ni texturas.
     - Genera el simbolo y el nombre o dependiendo de la descripción del "${logoType}" 
     - Evita incluir muchos detalles, decoraciones, degradados en entre los colores del logo, sombras ni texturas innecesarias.
-    - Asegúrate de que el logo generado contenga solo el nombre "${brand}" en texto limpio, sin distorsiones, decoraciones, ni palabras adicionales.
+    - Evita agregar palabras que no sean el nombre exacto de la empresa: "${brand}".
+    - Verifica que el texto esté correctamente escrito, sin errores ortográficos o palabras alteradas.
+    - Evita mostrar texto adicional, palabras irrelevantes o errores ortográficos.
     - Evita incluir marcos, bordes, ni elementos decorativos alrededor del logo.
-    - El diseño debe ser escalable, limpio, claro y profesional.
+    - El logo debe ser plano (flat design), con estilo limpio y profesional.
     - Fondo blanco o transparente únicamente.
+    - No incluir estilos vintage, grabados, relieves ni ilustraciones realistas.
     - Usa colores planos definidos por la paleta: ${colorPalette}.
-    - Toma en cuenta ${vision} y ${mision}, para que el logtipo represente más a la empresa.
     `;
 
 
@@ -146,7 +145,7 @@ app.post('/api/generate', async (req, res) => {
       body: JSON.stringify({
         model: "dall-e-3",
         prompt: dallePrompt,
-        size: imageSize || "1024x1024",
+        size:  "1024x1024",
         n: 1
       })
     });
@@ -172,6 +171,25 @@ app.post('/api/generate', async (req, res) => {
     res.status(500).json({ error: "Error generando el logo: " + err.message });
   }
 });
+
+// Ruta en el backend para descargar la imagen
+app.get('/api/download', async (req, res) => {
+  const { imageUrl, filename } = req.query;
+
+  try {
+    const response = await fetch(imageUrl);
+    const buffer = await response.buffer();
+
+    res.setHeader('Content-Type', 'image/png');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.send(buffer);
+  } catch (error) {
+    console.error('Error en descarga backend:', error);
+    res.status(500).send('Error al descargar imagen');
+  }
+});
+
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {

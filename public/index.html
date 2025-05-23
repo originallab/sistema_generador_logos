@@ -38,15 +38,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="visualElement">Elemento visual:</label>
-                        <input type="text" id="visualElement" name="visualElement" placeholder="Camión, Edificio, Animal" required>
+                        <label for="visualElement">Diseño visual:</label>
+                        <input type="text" id="visualElement" name="visualElement" placeholder="Describe el diseño" required>
                     </div>
                     <div class="form-group">
                         <label for="logoType">Tipo de logo:</label>
                         <select id="logoType" name="logoType" required>
-                            <option value="solo el nombre de la empresa, sin símbolos">Logotipo (Texto)</option>
-                            <option value="Un símbolo representativo de la empresa, sin incluir texto">Isotipo (Símbolo)</option>
-                            <option value="Una combinación de texto y símbolo integrados en un solo diseño">Isologotipo (Texto + Símbolo)</option>
+                            <option value="El diseño gráfico que combina de forma indivisible un elemento gráfico con el elemento tipográfico">Isologotipo (Texto + Símbolo integrados)</option>
+                            <option value="El diseño es representado solo por el nombre de la empresa">Logotipo (Texto)</option>
+                            <option value="El diseño es represetado solo por el elemento grafico">Isotipo (Símbolo)</option>
                             <option value="un texto separado de un símbolo, ambos elementos se presentan juntos pero no se combinan">Imagotipo (Texto y Símbolo separados)</option>
                         </select>
                     </div>
@@ -65,10 +65,10 @@
                     <div class="form-group">
                         <label for="logoStyle">Estilo de logo:</label>
                         <select id="logoStyle" name="logoStyle" required>
-                            <option value="Función libre de tendencias y formas, Posibiidad de resultados creativos">Ninguno</option>
-                            <option value="Lineas limpias y formas basicas, uo de poco colores, transmite oren, claridad y modernidad">Minimalista</option>
-                            <option value="formas geométricas o abstractas, colores vibrantes, transmite dinamismo, actilidad y profesionalismo">Moderno</option>
-                            <option value="Uso de trazos finos, detalles ornamentales, diseño simétricos o con alto cuidado en proporciones">Elegante</option>
+                            <option value="Diseño random">Ninguno</option>
+                            <option value="Minimalista">Minimalista</option>
+                            <option value="Moderno">Moderno</option>
+                            <option value="Elegante">Elegante</option>
                         </select>
                     </div>
 
@@ -85,15 +85,6 @@
                             <option value="Pasteles">Pasteles</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="imageSize">Tamaño de imagen:</label>
-                        <select id="imageSize" name="imageSize" required>
-                            <option value="1024x1024">1024x1024</option>
-                            <option value="1024x1792">1024x1792</option>
-                            <option value="1792x1024">1792x1024</option>
-                        </select>
-                    </div>
-
                     <button type="submit" id="generate-btn">
                         <span>Generar Logo</span>
                         <i class="fas fa-magic"></i>

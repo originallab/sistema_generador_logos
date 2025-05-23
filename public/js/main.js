@@ -131,19 +131,17 @@ async function generateLogo(data) {
 async function handleDownload() {
   if (!logoImage.src) return;
 
-  try {
-    const a = document.createElement('a');
-    a.href = logoImage.src;
-    a.download = `logo-${currentFormData.brand.replace(/\s+/g, '-')}.png`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  } catch (error) {
-    showError('Error al descargar el logo');
-    console.error('Error de descarga:', error);
-  }
-}
+  const filename = `logo-${currentFormData.brand.replace(/\s+/g, '-')}.png`;
 
+  const downloadUrl = `/api/download?imageUrl=${encodeURIComponent(logoImage.src)}&filename=${filename}`;
+
+  const a = document.createElement('a');
+  a.href = downloadUrl;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 /**
  * Maneja la regeneración del logo
  */

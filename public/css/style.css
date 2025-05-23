@@ -198,6 +198,10 @@ button:hover {
   padding: 1rem;
   background-color: #1e2540;
   border-radius: var(--border-radius);
+
+  /* Habilita scroll interno */
+  max-height: 257px; /* ajusta según tu preferencia */
+  overflow-y: auto;
 }
 
 .prompt-info h3, .explanation-container h3 {
@@ -213,6 +217,18 @@ button:hover {
 
 .explanation-container.active {
   display: block;
+}
+
+/* Opcional: estilo del scrollbar */
+.prompt-info::-webkit-scrollbar,
+.explanation-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.prompt-info::-webkit-scrollbar-thumb,
+.explanation-container::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 3px;
 }
 
 .action-buttons {
