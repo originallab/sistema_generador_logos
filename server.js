@@ -23,6 +23,37 @@ app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'index.html'));
 });
 
+// Función auxiliar para subir imagen a AWS S3
+async function uploadImageToS3(imageUrl, filename) {
+  try {
+    // Descargar la imagen desde DALL-E
+    const imageResponse = await fetch(imageUrl);
+    const imageBuffer = await imageResponse.buffer();
+
+    // Subir al S3 usando tu API Gateway
+    const s3UploadUrl = `https://kneib5mp53.execute-api.us-west-2.amazonaws.com/dev/folder/bucket-logolab/${filename}`;
+    
+    const uploadResponse = await fetch(s3UploadUrl, {
+      method: 'PUT',
+      body: imageBuffer,
+      headers: {
+        'Content-Type': 'image/png'
+      }
+    });
+
+    if (!uploadResponse.ok) {
+      throw new Error(`Error al subir a S3: ${uploadResponse.status} ${uploadResponse.statusText}`);
+    }
+
+    // Retornar la URL del archivo subido
+    return s3UploadUrl;
+  } catch (error) {
+    console.error('Error subiendo imagen a S3:', error);
+    throw error;
+  }
+}
+
+
 // Endpoint para generar logos
 app.post('/api/generate', async (req, res) => {
   // Obtener TODOS los datos del formulario
@@ -172,6 +203,9 @@ app.post('/api/generate', async (req, res) => {
   }
 });
 
+
+
+
 // Ruta en el backend para descargar la imagen
 app.get('/api/download', async (req, res) => {
   const { imageUrl, filename } = req.query;
@@ -189,6 +223,29 @@ app.get('/api/download', async (req, res) => {
   }
 });
 
+
+// Nuevo endpoint para subir imágenes manualmente a S3
+app.post('/api/upload-to-s3', async (req, res) => {
+  const { imageUrl, filename } = req.body;
+
+  if (!imageUrl || !filename) {
+    return res.status(400).json({ error: 'Se requieren imageUrl y filename' });
+  }
+
+  try {
+    const s3Url = await uploadImageToS3(imageUrl, filename);
+    res.json({ 
+      success: true, 
+      s3Url: s3Url,
+      message: 'Imagen subida exitosamente a S3'
+    });
+  } catch (error) {
+    console.error('Error subiendo a S3:', error);
+    res.status(500).json({ 
+      error: 'Error subiendo imagen a S3: ' + error.message 
+    });
+  }
+});
 
 
 // Iniciar el servidor
